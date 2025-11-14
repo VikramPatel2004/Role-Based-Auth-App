@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Signup{% endblock %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+
+    <div class="row justify-content-center">
+        <div class="col-md-7">
+
+            <div class="card shadow p-4 rounded-4">
+
+                <h2 class="text-center mb-4 fw-bold">Create Account</h2>
+
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-semibold">First Name</label>
+                            {{ form.first_name }}
+                            <small class="text-danger">{{ form.first_name.errors }}</small>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-semibold">Last Name</label>
+                            {{ form.last_name }}
+                            <small class="text-danger">{{ form.last_name.errors }}</small>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Username</label>
+                        {{ form.username }}
+                        <small class="text-danger">{{ form.username.errors }}</small>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Email</label>
+                        {{ form.email }}
+                        <small class="text-danger">{{ form.email.errors }}</small>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Password</label>
+                        {{ form.password1 }}
+                        <small class="text-danger">{{ form.password1.errors }}</small>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Confirm Password</label>
+                        {{ form.password2 }}
+                        <small class="text-danger">{{ form.password2.errors }}</small>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Role</label>
+                        {{ form.role }}
+                        <small class="text-danger">{{ form.role.errors }}</small>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Profile Image</label>
+                        {{ form.profile_pic }}
+                        <small class="text-danger">{{ form.profile_pic.errors }}</small>
+                    </div>
+
+                    <hr>
+
+                    <h5 class="fw-bold mb-3">Address Details</h5>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Address Line 1</label>
+                        {{ form.address_line1 }}
+                        <small class="text-danger">{{ form.address_line1.errors }}</small>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label fw-semibold">City</label>
+                            {{ form.city }}
+                            <small class="text-danger">{{ form.city.errors }}</small>
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label fw-semibold">State</label>
+                            {{ form.state }}
+                            <small class="text-danger">{{ form.state.errors }}</small>
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label fw-semibold">Pincode</label>
+                            {{ form.pincode }}
+                            <small class="text-danger">{{ form.pincode.errors }}</small>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary w-100 mt-2 fw-semibold rounded-pill" type="submit">
+                        Signup
+                    </button>
+                </form>
+
+                <p class="text-center mt-3">
+                    Already have an account?
+                    <a href="{% url 'login' %}" class="fw-bold">Login</a>
+                </p>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+{% endblock %}
