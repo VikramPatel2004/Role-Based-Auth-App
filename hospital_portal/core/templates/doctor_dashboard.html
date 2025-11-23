@@ -39,13 +39,27 @@
             </div>
         </div>
 
+
+
         <div class="col-md-4">
-            <div class="card shadow border-0 rounded-4 p-4">
-                <h5 class="fw-bold">Today's Appointments</h5>
-                <p class="text-muted">5 appointments today</p>
-                <a href="#" class="btn btn-success btn-sm rounded-3">View Schedule</a>
-            </div>
-        </div>
+    <div class="card shadow border-0 rounded-4 p-4">
+        <h5 class="fw-bold">Blog Management</h5>
+        <p class="text-muted">Create and manage your blogs</p>
+
+        <a href="{% url 'blog:create_blog' %}" class="btn btn-primary btn-sm rounded-3 w-100 mb-2">
+            Create New Blog
+        </a>
+
+        <a href="{% url 'blog:view_blogs' %}" class="btn btn-secondary btn-sm rounded-3 w-100 mb-2">
+            View All Blogs
+        </a>
+
+        <a href="{% url 'blog:doctor_my_blogs' %}" class="btn btn-warning btn-sm rounded-3 w-100">
+            Manage Blogs
+        </a>
+    </div>
+</div>
+
     </div>
 
 </div>

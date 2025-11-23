@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load form_filters %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card shadow p-4" style="max-width: 800px; margin: auto;">
+        <h3 class="mb-4 text-center">Edit Blog ✏️</h3>
+
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <!-- Title -->
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Title</label>
+                <div class="input-group">
+                    {{ form.title|add_class:"form-control" }}
+                </div>
+            </div>
+
+<div class="mb-3">
+    <label class="form-label fw-semibold d-block">Current Image</label>
+    {% if post.image %}
+        <img src="{{ post.image.url }}" class="rounded mb-2"
+             style="width:200px; height:150px; object-fit:cover;"><br>
+        <small class="text-muted">{{ post.image.name|slice:"14:" }}</small>
+    {% else %}
+        <p class="text-muted">No image uploaded</p>
+    {% endif %}
+</div>
+
+<div class="mb-3">
+    <label class="form-label fw-semibold d-block">Change Image</label>
+    {{ form.image|add_class:"form-control" }}
+</div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Category</label>
+                {{ form.category|add_class:"form-select" }}
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Summary (15+ words)</label>
+                {{ form.summary|add_class:"form-control" }}
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Full Content</label>
+                {{ form.content|add_class:"form-control" }}
+            </div>
+
+            <div class="form-check mb-3">
+                {{ form.is_draft }}
+                <label class="form-check-label ms-2">Save as Draft</label>
+            </div>
+
+            <button class="btn btn-primary w-100">Update Blog</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

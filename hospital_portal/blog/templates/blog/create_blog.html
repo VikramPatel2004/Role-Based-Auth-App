@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load form_filters %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card shadow p-4" style="max-width: 800px; margin: auto;">
+        <h3 class="mb-4 text-center">Create Blog</h3>
+
+        <form method="POST" enctype="multipart/form-data" id="blogForm">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Title</label>
+                {{ form.title|add_class:"form-control" }}
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Image</label>
+                {{ form.image|add_class:"form-control" }}
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Category</label>
+                {{ form.category|add_class:"form-select" }}
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Summary (15+ words)</label>
+                {{ form.summary|add_class:"form-control" }}
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Full Content</label>
+                {{ form.content|add_class:"form-control" }}
+            </div>
+
+            <div class="form-check mb-3">
+                {{ form.is_draft }}
+                <label class="form-check-label ms-2">Save as Draft</label>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Publish Blog</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
